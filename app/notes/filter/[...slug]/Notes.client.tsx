@@ -62,9 +62,11 @@ export default function NotesClient({ initialData, tag }: NotesClientProps) {
           <NoteForm onClose={closeModal} onSuccess={closeModal} />
         </Modal>
       )} */}
-      <Modal>
-        <NoteForm onClose={closeModal} onSuccess={closeModal} />
-      </Modal>
+      {isModalOpen && (
+        <Modal>
+          <NoteForm onClose={closeModal} onSuccess={closeModal} />
+        </Modal>
+      )}
     </div>
   );
 }

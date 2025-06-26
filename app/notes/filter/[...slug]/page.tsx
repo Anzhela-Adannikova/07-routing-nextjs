@@ -1,9 +1,9 @@
 import { fetchNotes } from "@/lib/api";
-import NotesClient from "./Notes.cliet";
+import NotesClient from "./Notes.client";
 
-interface Props {
+type Props = {
   params: { slug?: string[] };
-}
+};
 
 export default async function FilteredNotesPage({ params }: Props) {
   const tag = params.slug?.[0];
