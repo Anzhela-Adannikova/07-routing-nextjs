@@ -5,7 +5,7 @@ import css from "./NoteDetails.client.module.css";
 import { useQuery } from "@tanstack/react-query";
 import { fetchNoteById } from "@/lib/api";
 import { useParams } from "next/navigation";
-import NoteModal from "@/components/NoteModal/NoteModal";
+import NoteModal from "@/components/Modal/Modal";
 
 type NoteParams = {
   id: string;

@@ -1,9 +1,3 @@
-// Весь вміст компонента App з попередньої ДЗ перенесіть
-// на сторінку /notes. Усі інші компоненти з попередньої
-// ДЗ перенесіть у папку components.
-
-// Реалізуйте компонент сторінки Notes як SSR компонент
-// і винесіть усю клієнтську логіку у файл компонента app\\notes\\Notes.client.tsx
 "use client";
 
 import { useState } from "react";
@@ -13,15 +7,17 @@ import { useDebounce } from "use-debounce";
 import type { FetchNoteService } from "@/lib/api";
 import css from "./NotesPage.module.css";
 import NoteList from "@/components/NoteList/NoteList";
-import NoteModal from "@/components/NoteModal/NoteModal";
+import Modal from "@/components/Modal/Modal";
+import NoteForm from "@/components/NoteForm/NoteForm";
 import SearchBox from "@/components/SearchBox/SearchBox";
 import Pagination from "@/components/Pagination/Pagination";
 
 interface NotesClientProps {
   initialData: FetchNoteService;
+  tag?: string;
 }
 
-export default function NotesClient({ initialData }: NotesClientProps) {
+export default function NotesClient({ initialData, tag }: NotesClientProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -29,8 +25,8 @@ export default function NotesClient({ initialData }: NotesClientProps) {
   const perPage = 12;
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: ["notes", currentPage, debounceSearchTerm],
-    queryFn: () => fetchNotes(currentPage, debounceSearchTerm, perPage),
+    queryKey: ["notes", currentPage, debounceSearchTerm, tag],
+    queryFn: () => fetchNotes(currentPage, debounceSearchTerm, perPage, tag),
     placeholderData: keepPreviousData,
     initialData,
   });
@@ -61,7 +57,14 @@ export default function NotesClient({ initialData }: NotesClientProps) {
       {isLoading && <strong className={css.loading}>Loading notes...</strong>}
       {isError && <p>Something went wrong. Please try again.</p>}
       {data && <NoteList notes={data.notes} />}
-      {isModalOpen && <NoteModal onClose={closeModal} onSuccess={closeModal} />}
+      {/* {isModalOpen && (
+        <Modal onClose={closeModal}>
+          <NoteForm onClose={closeModal} onSuccess={closeModal} />
+        </Modal>
+      )} */}
+      <Modal>
+        <NoteForm onClose={closeModal} onSuccess={closeModal} />
+      </Modal>
     </div>
   );
 }

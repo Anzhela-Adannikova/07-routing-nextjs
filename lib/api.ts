@@ -29,10 +29,12 @@ export interface FetchNoteService {
 export const fetchNotes = async (
   page = 1,
   query = "",
-  perPage = 12
+  perPage = 12,
+  tag?: string
 ): Promise<FetchNoteService> => {
   const params: Record<string, string | number> = { page, perPage };
   if (query) params.search = query;
+  if (tag && tag !== `All`) params.tag = tag;
 
   const res = await noteServiceClient.get<FetchNoteService>("/", { params });
   return res.data;
