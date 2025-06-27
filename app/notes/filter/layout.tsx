@@ -1,23 +1,23 @@
 import React from "react";
 import css from "./LayoutNotes.module.css";
 
-interface NotesLayoutProps {
-  children: React.ReactNode;
-  sidebar: React.ReactNode;
-  modal: React.ReactNode;
-}
+// interface NotesLayoutProps {
+//   children: React.ReactNode;
+//   sidebar: React.ReactNode;
+//   modal: React.ReactNode;
+// }
 
 export default function NotesLayout({
   children,
-  sidebar,
-  modal,
-}: NotesLayoutProps) {
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <main className={css.container}>
-      {sidebar}
+      {/* {sidebar} */}
       <div className={css.notesWrapper}>
         {children}
-        {modal}
+        {/* {modal} */}
       </div>
     </main>
   );
