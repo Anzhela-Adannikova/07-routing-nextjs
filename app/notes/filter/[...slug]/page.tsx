@@ -1,11 +1,15 @@
 import { fetchNotes } from "@/lib/api";
 import NotesClient from "./Notes.client";
 
-type Props = {
-  params: { slug?: string[] };
-};
+// type Props = {
+//   params: { slug?: string[] };
+// };
 
-export default async function FilteredNotesPage({ params }: Props) {
+export default async function FilteredNotesPage({
+  params,
+}: {
+  params: { slug?: string[] };
+}) {
   const tag = params.slug?.[0];
   const isAll = !tag || tag === "All";
 

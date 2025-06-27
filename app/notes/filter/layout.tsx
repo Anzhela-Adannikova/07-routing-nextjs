@@ -5,7 +5,6 @@ interface NotesLayoutProps {
   children: React.ReactNode;
   sidebar: React.ReactNode;
   modal: React.ReactNode;
-  // params: { slug?: string[] };
 }
 
 export default function NotesLayout({
@@ -16,7 +15,6 @@ export default function NotesLayout({
   return (
     <main className={css.container}>
       {sidebar}
-      {/* <div className={css.sidebar}>{sidebar}</div> */}
       <div className={css.notesWrapper}>
         {children}
         {modal}

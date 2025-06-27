@@ -1,8 +1,10 @@
 // модальне вікно яке відкривається при створенні нотатки
+"use client";
+
 import { useEffect, useState } from "react";
 import css from "./Modal.module.css";
 import { createPortal } from "react-dom";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 interface ModalProps {
   children: React.ReactNode;
