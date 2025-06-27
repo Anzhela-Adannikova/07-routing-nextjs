@@ -28,16 +28,24 @@
 //   );
 // }
 
-import { fetchNoteById } from "@/lib/api";
+// import { fetchNoteById } from "@/lib/api";
+// import NotePreview from "@/app/notes/[id]/NotePreview";
+
+// type Props = {
+//   params: { id: string };
+// };
+
+// export default async function NotePreviewPage({ params }: Props) {
+//   const noteId = Number(params.id);
+//   const note = await fetchNoteById(noteId);
+
+//   return <NotePreview note={note} />;
+// }
+
+"use client";
+
 import NotePreview from "@/app/notes/[id]/NotePreview";
 
-type Props = {
-  params: { id: string };
-};
-
-export default async function NotePreviewPage({ params }: Props) {
-  const noteId = Number(params.id);
-  const note = await fetchNoteById(noteId);
-
-  return <NotePreview note={note} />;
+export default function NotePreviewPage() {
+  return <NotePreview />;
 }

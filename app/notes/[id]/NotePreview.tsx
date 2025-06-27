@@ -39,6 +39,7 @@ import { useParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { fetchNoteById } from "@/lib/api";
 import css from "./NotePreview.module.css";
+import type { Note } from "@/types/note";
 
 type NoteParams = {
   id: string;
@@ -52,7 +53,7 @@ export default function NotePreview() {
     data: note,
     isLoading,
     isError,
-  } = useQuery({
+  } = useQuery<Note>({
     queryKey: ["notes", id],
     queryFn: () => fetchNoteById(id),
     enabled: !Number.isNaN(id) && Boolean(id),

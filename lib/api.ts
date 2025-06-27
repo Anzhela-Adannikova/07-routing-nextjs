@@ -35,7 +35,7 @@ export const fetchNotes = async (
   const params: Record<string, string | number> = { page, perPage };
   if (query) params.search = query;
   if (tag && tag !== `All`) params.tag = tag;
-
+  console.log("Fetching notes with params:", params);
   const res = await noteServiceClient.get<FetchNoteService>("/", { params });
   return res.data;
 };
