@@ -21,4 +21,3 @@ export default function TagsMenu() {
     </div>
   );
 }
-// tag === `All` ? `notes/filter/All` :

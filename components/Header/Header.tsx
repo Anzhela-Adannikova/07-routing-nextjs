@@ -13,10 +13,7 @@ export default function Header() {
           <li>
             <Link href="/">Home</Link>
           </li>
-          <li>
-            {<TagsMenu />}
-            {/* <Link href="/notes">Notes</Link> */}
-          </li>
+          <li>{<TagsMenu />}</li>
         </ul>
       </nav>
     </header>
