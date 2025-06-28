@@ -10,10 +10,10 @@
 //   return <NotePreview note={note} />;
 // }
 // app/notes/filter/[tag]/@modal/[id]/NotePreviewWrapper.tsx
-"use client";
+// "use client";
 
-import NotePreview from "@/app/notes/[id]/NotePreview";
+// import NotePreview from "@/app/notes/[id]/NotePreview";
 
-export default function NotePreviewPage() {
-  return <NotePreview />;
-}
+// export default function NotePreviewPage() {
+//   return <NotePreview />;
+// }
