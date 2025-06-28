@@ -14,6 +14,6 @@
 
 import NotePreview from "@/app/notes/[id]/NotePreview";
 
-export default function NotePreviewWrapper() {
+export default function NotePreviewPage() {
   return <NotePreview />;
 }
