@@ -1,4 +1,4 @@
-import NotePreview from "./NotePreview";
+import NotePreview from "./NoteDetails.client";
 import Modal from "@/components/Modal/Modal";
 
 export default function NoteDetailsPage() {
