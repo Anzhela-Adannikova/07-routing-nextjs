@@ -1,8 +1,3 @@
-// Функції роботи з API винесені в lib/api/ у вигляді окремих модулів
-
-// Весь вміст файлу src/services/noteService.ts з попередньої ДЗ перенесіть
-// у файл lib/api.ts
-
 /* fetchNotes : request to get a collection of notes from the server
 createNote: creating a new note on the server
 deleteNote: delete a note by a given identifier */

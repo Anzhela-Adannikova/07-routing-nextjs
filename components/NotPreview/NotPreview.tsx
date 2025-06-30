@@ -3,7 +3,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import { fetchNoteById } from "@/lib/api";
-import css from "./NotePreview.module.css";
+import css from "./NotPreview.module.css";
 import type { Note } from "@/types/note";
 
 type NoteParamsProps = {

@@ -40,6 +40,6 @@ export default function Modal({ children }: ModalProps) {
         {children}
       </div>
     </div>,
-    document.getElementById("modal-root")!
+    document.body
   );
 }
