@@ -1,17 +1,17 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import { useRouter } from "next/router";
+
 import { fetchNoteById } from "@/lib/api";
 import css from "./NotPreview.module.css";
 import type { Note } from "@/types/note";
 
 type NoteParamsProps = {
   id: string;
+  onClose: () => void;
 };
 
-export default function NotePreview({ id }: NoteParamsProps) {
-  const router = useRouter();
+export default function NotePreview({ id, onClose }: NoteParamsProps) {
   const parseId = Number(id);
   const {
     data: note,
@@ -29,7 +29,7 @@ export default function NotePreview({ id }: NoteParamsProps) {
 
   return (
     <div className={css.container}>
-      <button className={css.backBtn} onClick={() => router.back()}>
+      <button className={css.backBtn} onClick={onClose}>
         Back
       </button>
       <div className={css.item}>

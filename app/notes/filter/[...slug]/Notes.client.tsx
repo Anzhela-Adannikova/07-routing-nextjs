@@ -59,7 +59,7 @@ export default function NotesClient({ initialData, tag }: NotesClientProps) {
       {isError && <p>Something went wrong. Please try again.</p>}
       {data && <NoteList notes={data.notes} />}
       {isModalOpen && (
-        <Modal>
+        <Modal onClose={closeModal}>
           <NoteForm onClose={closeModal} onSuccess={closeModal} />
         </Modal>
       )}

@@ -1,23 +1,22 @@
 // модальне вікно яке відкривається при створенні нотатки
 "use client";
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import css from "./Modal.module.css";
 import { createPortal } from "react-dom";
-import { useRouter } from "next/navigation";
 
 interface ModalProps {
   children: React.ReactNode;
+  onClose: () => void;
 }
 
-export default function Modal({ children }: ModalProps) {
-  const router = useRouter();
+export default function Modal({ onClose, children }: ModalProps) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
     const handleEsc = (event: KeyboardEvent) => {
-      if (event.key === "Escape") router.back();
+      if (event.key === "Escape") onClose();
     };
 
     const originalOverflow = document.body.style.overflow;
@@ -28,14 +27,16 @@ export default function Modal({ children }: ModalProps) {
       document.body.style.overflow = originalOverflow;
       window.removeEventListener("keydown", handleEsc);
     };
-  }, [router]);
+  }, [onClose]);
 
-  const handleCLose = () => router.back();
+  const handleBackdropCLose = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (event.target === event.currentTarget) onClose();
+  };
 
   if (!mounted) return null;
 
   return createPortal(
-    <div className={css.backdrop} onClick={handleCLose}>
+    <div className={css.backdrop} onClick={handleBackdropCLose}>
       <div className={css.modal} onClick={(event) => event.stopPropagation()}>
         {children}
       </div>
