@@ -1,14 +1,19 @@
 import { fetchNotes } from "@/lib/api";
 import NotesClient from "./Notes.client";
 
-export default async function FilteredNotesPage(props: {
+type FilteredNotesPageProps = {
   params: Promise<{ slug: string[] }>;
-}) {
-  const { slug } = await props.params;
-  const tag = slug[0];
-  const isAll = !tag || tag === "All";
+};
 
-  const data = await fetchNotes(1, "", 12, isAll ? undefined : tag);
+export default async function FilteredNotesPage({
+  params,
+}: FilteredNotesPageProps) {
+  const { slug } = await params;
+  const tag = slug[0] === "All" ? undefined : slug[0];
+  // console.log(tag);
+
+  const data = await fetchNotes(1, "", 12, tag);
+  // console.log(data);
 
   return <NotesClient initialData={data} tag={tag} />;
 }

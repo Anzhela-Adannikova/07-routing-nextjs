@@ -1,15 +1,3 @@
-// import NotePreview from "./NoteDetails.client";
-// import Modal from "@/components/Modal/Modal";
-
-// export default function NoteDetailsPage() {
-//   return (
-//     <Modal>
-//       <NotePreview />
-//     </Modal>
-//   );
-// }
-// app/notes/[id]/page.tsx
-
 import {
   QueryClient,
   HydrationBoundary,
@@ -19,16 +7,17 @@ import { fetchNotes } from "@/lib/api";
 import NoteDetailsClient from "./NoteDetails.client";
 
 type Props = {
-  params: Promise<{ id: number }>;
+  params: Promise<{ id: string }>;
 };
 
 const NoteDetails = async ({ params }: Props) => {
   const { id } = await params;
+  const parseId = Number(id);
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
-    queryKey: ["note", id],
-    queryFn: () => fetchNotes(id),
+    queryKey: ["note", parseId],
+    queryFn: () => fetchNotes(parseId),
   });
 
   return (

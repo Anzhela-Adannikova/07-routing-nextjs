@@ -12,13 +12,14 @@ type NoteParamsProps = {
 
 export default function NotePreview({ id }: NoteParamsProps) {
   const router = useRouter();
+  const parseId = Number(id);
   const {
     data: note,
     isLoading,
     isError,
   } = useQuery<Note>({
-    queryKey: ["notes", id],
-    queryFn: () => fetchNoteById(Number(id)),
+    queryKey: ["notes", parseId],
+    queryFn: () => fetchNoteById(parseId),
     refetchOnMount: false,
   });
 

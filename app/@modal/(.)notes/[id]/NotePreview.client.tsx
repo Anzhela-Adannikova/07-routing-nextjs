@@ -7,10 +7,9 @@ import { useParams } from "next/navigation";
 export default function NotePreviewPage() {
   const { id } = useParams();
 
-  if (typeof id !== "string") return null;
   return (
     <Modal>
-      <NotePreview id={id} />
+      <NotePreview id={String(id)} />
     </Modal>
   );
 }
