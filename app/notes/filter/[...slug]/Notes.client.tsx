@@ -30,7 +30,6 @@ export default function NotesClient({ initialData, tag }: NotesClientProps) {
     placeholderData: keepPreviousData,
     initialData,
   });
-  console.log(data);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);

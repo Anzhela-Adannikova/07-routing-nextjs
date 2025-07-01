@@ -17,8 +17,3 @@ export default async function FilteredNotesPage({
 
   return <NotesClient initialData={data} tag={tag} />;
 }
-// import NotePreview from "@/app/notes/[id]/NoteDetails.client";
-
-// export default function NotePreviewPage() {
-//   return <NotePreview />
-// }

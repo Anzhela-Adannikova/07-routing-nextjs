@@ -29,14 +29,14 @@ export default function Modal({ onClose, children }: ModalProps) {
     };
   }, [onClose]);
 
-  const handleBackdropCLose = (event: React.MouseEvent<HTMLDivElement>) => {
+  const handleBackdropClose = (event: React.MouseEvent<HTMLDivElement>) => {
     if (event.target === event.currentTarget) onClose();
   };
 
   if (!mounted) return null;
 
   return createPortal(
-    <div className={css.backdrop} onClick={handleBackdropCLose}>
+    <div className={css.backdrop} onClick={handleBackdropClose}>
       <div className={css.modal} onClick={(event) => event.stopPropagation()}>
         {children}
       </div>
